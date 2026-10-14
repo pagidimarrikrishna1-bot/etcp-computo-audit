@@ -1,0 +1,6 @@
+comparison_id,model_a,model_b,feature_count_a,feature_count_b,horizon_a,horizon_b,target_alignment,preprocessing_alignment,provenance,expected_decision,computed_decision,validation
+P01,Historical Meta-KAN,Corrected LSTM seed 101,7,6,1,24,same,same,incomplete,ineligible,ineligible,PASS
+P02,Corrected LSTM seed 101,Corrected LSTM seed 202,6,6,24,24,same,same,partial,conditional,conditional,PASS
+P03,Corrected LSTM seed 101,Training-mean baseline,6,6,24,24,same,same,partial,conditional,conditional,PASS
+P04,Toy model A,Toy model B,3,3,1,1,same,same,complete,eligible,eligible,PASS
+P05,Toy model A,Toy model C,3,3,1,3,same,same,complete,ineligible,ineligible,PASS
