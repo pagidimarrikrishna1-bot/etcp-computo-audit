@@ -4,47 +4,30 @@ project:
     - main.qmd
     - README.qmd
 
-title: "Template for contribution to Computo"
-subtitle: "Example dedicated to `Python` users"
+title: "Separating Evidence Traceability from Model Comparability: A Reproducible Case-Based Audit of Meta-KAN for Transformer Oil-Temperature Forecasting"
 author:
-  - name: Jane Doe
+  - name: Pagidimarri Krishna
     corresponding: true
-    email: janedoe@nowhere.moon
-    url: https://janedoe.someplace.themoon.org
-    orcid: 0000-0000-0000-0000
+    email: pagidimarrikrishna1@gmail.com
+    orcid: 0009-0007-0352-0887
     affiliations:
-      - name: Name of Affiliation one
-        department: Statistics
-        url: https://someplace.themoon.org
-  - name: John Doe
-    email: johndoe@nowhere.moon
-    url: https://johndoe.someplace.themoon.org
-    orcid: 0000-0000-0000-0000
-    affiliations:
-      - name: Name of Affiliation two
-        department: Computer Science
-        url: https://someplace.themoon.org
+      - name: Independent Researcher
+        department: Hyderabad, India
 date: last-modified
 date-modified: last-modified
 abstract: >+
-  Template for preparing a submission to Computo, using the [quarto journal extension](https://github.com/computorg/computo-quarto-extension), the Jupyter kernel (Python user) and the environment files to set-up the dependencies.
-
-  For a detailed, step-by-step guide on preparing your article, setting up the continuous integration and submitting it to Computo, please consult the [guidelines for authors](https://computo-journal.org/site/guidelines-authors.html).
-keywords: [key1, key2, key3]
+  Machine-learning forecasting results can be interpreted responsibly only when the prediction task, input definition, preprocessing, evaluation protocol, and supporting artifacts are sufficiently traceable. This study presents an evidence-bounded computational audit of a previously reported Meta-KAN for transformer oil-temperature forecasting. Historical metrics remain reported values and are not independently reproduced. The corrected workspace contains one completed six-predictor LSTM record for seed 101; corrected records for seeds 202 and 303 were not found. A deterministic ETCP prototype processes supplied claim and comparison records. Its software checks demonstrate limited implementation behavior, not general scientific validation.
+keywords: [reproducibility, provenance, model comparability, evidence audit, time-series forecasting]
 bibliography: references.bib
-github-user: computorg
-repo: "template-computo-python"
-status: submitted
-license: CC-BY-4.0
+github-user: "pagidimarrikrishna1-bot"
+repo: "etcp-computo-audit"
+status: "draft"
 citation:
   type: article-journal
   container-title: "Computo"
   issn: "2824-7795"
-  doi: "10.5072/computo.0000" # placeholder DOI (10.5072 is the official DOI test prefix), replace once assigned
-  # set at acceptance, with the published repository name (used by Google Scholar):
-  # url: "https://computo-journal.org/published-YYYYMM-name/"
-  # pdf-url: "https://computo-journal.org/published-YYYYMM-name/main.pdf"
+  doi: "10.5072/computo.0000"
+license: CC-BY-4.0
 format:
   computo-html: default
   computo-pdf: default
-jupyter: python3
