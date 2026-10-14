@@ -1,197 +1,332 @@
-# Introduction
 
-## About this document
-
-This document, accompanied by the [customized GitHub repository](https://github.com/computorg/template-computo-python/), provides a template for writing contributions to **Computo** [@computo].
-
-::: {.callout-tip}
-## Note
-This document provides only the key formatting principles. For a detailed, step-by-step guide on preparing your article and submitting it to Computo, please consult the [guidelines for authors](https://computo-journal.org/site/guidelines-authors.html).
-:::
-
-## Quarto
-
-[Quarto](https://quarto.org/) is a versatile formatting system for authoring documents integrating markdown, LaTeX and code blocks interpreted either via Jupyter or Knitr (thus supporting Python, R and Julia). It relies on the [Pandoc](https://pandoc.org/MANUAL.html) document converter.
-
-## Requirements
-
-You need [quarto](https://quarto.org/) installed on your system and the [Computo extension](https://github.com/computorg/computo-quarto-extension) to prepare your document. For the latter, once quarto is installed, run the following to install the extension in the current directory (it creates a `_extension` directory which is ignored by git thanks to `.gitignore` by default):
-
-```.bash
-quarto add computorg/computo-quarto-extension
-```
-
-[`Python`](https://www.python.org/) and [`Jupyter`](https://jupyter.org/install) must be installed on your computer.
-
-# Formatting
-
-This section covers basic formatting guidelines for quarto documents.
-
-To render a document, run `quarto render`. By default, both PDF and HTML documents are generated:
-
-```.bash
-quarto render # renders both HTML and PDF
-```
-
-::: {.callout-tip}
-## Note
-
-To check the syntax of the formatting below, you can use the `</> source` button at the top right of this document.
-:::
-
-## Basic markdown formatting
-
-**Bold text** or _italic_
-
-- This is a list
-- With more elements
-- It isn't numbered.
-
-But we can also do a numbered list
-
-1. This is my first item
-2. This is my second item
-3. This is my third item
-
-## Mathematics
-
-### Mathematical formulae
-
-[LaTeX](https://www.latex-project.org/) code is natively supported[^lualatex], which makes it possible to use mathematical formulae:
-
-[^lualatex]: We use [lualatex](https://lualatex.org/) for this purpose.
-
-$$
-f(x_1, \dots, x_n; \mu, \sigma^2) =
-\frac{1}{\sigma \sqrt{2\pi}} \exp{\left(- \frac{1}{2\sigma^2}\sum_{i=1}^n(x_i - \mu)^2\right)}
-$$
-
-It is also possible to cross-reference an equation, see @eq-mylabel:
-
-$$
-\begin{aligned}
-D_{x_N} & = \frac12
-\left[\begin{array}{cc}
-x_L^\top & x_N^\top \end{array}\right] \,
-\left[\begin{array}{cc}  L_L & B \\ B^\top & L_N \end{array}\right] \,
-\left[\begin{array}{c}
-x_L \\ x_N \end{array}\right] \\
-& = \frac12 (x_L^\top L_L x_L + 2 x_N^\top B^\top x_L + x_N^\top L_N x_N),
-\end{aligned}
-$$ {#eq-mylabel}
-
-### Theorems and other amsthem-like environments
-
-Quarto includes a nice support for theorems, with predefined prefix labels for theorems, lemmas, proposition, etc. see [this page](https://quarto.org/docs/authoring/cross-references.html#theorems-and-proofs). Here is a simple example:
-
-::: {#thm-slln}
-## Strong law of large numbers
-
-The sample average converges almost surely to the expected value:
-
-$$\overline{X}_n\ \xrightarrow{\text{a.s.}}\ \mu \qquad\textrm{when}\ n \to \infty.$$
-:::
-
-See @thm-slln.
-
-## Python Code
-
-Quarto uses either Jupyter or knitr to render code chunks. This can be triggered in the yaml header. In this tutorial, we use `Jupyter` (`Python` and `Jupyter` must be installed on your computer).
-
-``` yaml
----
-title: "My Document"
-author: "Jane Doe"
-jupyter: python3
----
-```
-
-`python` code chunks may be embedded as follows:
-
-```{python python-code}
-import numpy as np
-x = np.random.normal(0, 1, 10)
-x
-```
-
-## Figures
-
-Plots can be generated as follows:
-
-```{python stem-plot}
-#| label: fig-stem-plot
-#| fig-cap: "A basic Stem plot"
-
-import matplotlib.pyplot as plt
-import numpy as np
-
-x = np.linspace(0.1, 2 * np.pi, 41)
-y = np.exp(np.sin(x))
-
-plt.stem(x, y)
-plt.show()
-```
-
-It is also possible to create figures from static images:
-
-:::{#fig-logo}
-
-![](https://raw.githubusercontent.com/computorg/comm/main/design/logo_text_vertical.png){height=200}
-
-Computo logo (label)
-:::
-
-
-## Tables
-
-Tables (with label: `@tbl-mylabel` renders @tbl-mylabel) can be generated with markdown as follows
-
-| Tables   |      Are      |  Cool |
-|----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
-: my table caption {#tbl-mylabel}
-
-## Handling references {#sec-references}
-
-### Bibliographic references
-
-References are displayed as footnotes using
-[BibTeX](http://www.bibtex.org/), e.g. `[@computo]` will be displayed
-as [@computo], where `computo` is the bibtex key for this specific
-entry. The bibliographic information is automatically retrieved from
-the `.bib` file specified in the header of this document (here:
-`references.bib`).
-
-### Other cross-references
-
-As already (partially) seen, Quarto includes a mechanism similar to the
-bibliographic references for sections, equations, theorems, figures,
-lists, etc. Have a look at [this
-page](https://quarto.org/docs/authoring/cross-references.html).
-
-## Advanced formatting
-
-Advanced formatting features are possible and documented (including interactive plots, pseudo-code, (Tikz) diagrams, Lua filters, mixing R + Python in the same document), but are beyond the scope of this simple introduction. We point to several entries in this direction.
-
-::: {.callout-warning}
-## More information
-
-- [The Quarto web site](https://quarto.org) for comprehensive documentation, including:
-  + [Tutorial](https://quarto.org/docs/get-started/)
-  + [User guide](https://quarto.org/docs/guide/)
-  + [Options reference](https://quarto.org/docs/reference/)
-
-- [The template distributed with the Computo Quarto extension](https://computo.sfds.asso.fr/computo-quarto-extension/), which uses such advanced features.
-
-- [Our mock version of the t-SNE paper](https://computo.sfds.asso.fr/published-paper-tsne/), a full and advanced example using Python and the Jupyter kernel.
-
-- [The previously published papers in Computo](https://computo.sfds.asso.fr/publications/) can be used as references.
-
-:::
-
-# References {.unnumbered}
-
-::: {#refs}
-:::
+# 1. Introduction
+
+Forecasting transformer oil temperature from multivariate time series is
+an engineering prediction problem in which reported errors depend on the
+target definition, input variables, lookback, forecast horizon, temporal
+split, preprocessing, and evaluation procedure. A model label alone does
+not establish that two numerical results describe comparable tasks. This
+issue becomes especially important when historical results are preserved
+in a manuscript but the original source predictions or complete
+execution artifacts are unavailable.
+
+This paper examines a previously reported Meta-KAN forecasting case and
+asks how evidence provenance can be separated from the eligibility of a
+direct comparison. The aim is not to establish that Meta-KAN is superior
+to another architecture, nor to reproduce its historical metrics.
+Instead, we provide a structured claim-level audit and a small
+executable proof of concept for the Evidence-Traceability and
+Comparability Protocol (ETCP).
+
+## 1.1 Aim and research questions
+
+- RQ1. Which claims are documented in the preserved manuscript, and
+  which remain unverified or unsupported?
+
+- RQ2. How do the historical Meta-KAN and corrected LSTM task contracts
+  differ?
+
+- RQ3. Which task and provenance conditions should govern direct
+  comparison of forecasting results?
+
+- RQ4. Can the proposed audit rules be implemented as a deterministic
+  computation whose outputs are regenerated from supplied records?
+
+## 1.2 Contributions and scope
+
+The paper makes three bounded contributions: (i) an evidence inventory
+for a preserved Meta-KAN manuscript and related project records; (ii) an
+explicit separation between claim evidence status and pairwise
+comparison eligibility; and (iii) an executable proof of concept that
+generates audit tables and tests expected outcomes on illustrative
+cases. This is a software-operationalization demonstration, not a
+validation study of ETCP's reliability or added value over existing
+checklists.
+
+# 2. Related work and positioning
+
+Sequence forecasting literature includes recurrent models such as LSTM [@hochreiter1997lstm],
+attention-based architectures [@vaswani2017attention], and long-sequence forecasting
+approaches including Informer, Autoformer, FEDformer, and PatchTST [@zhou2021informer; @wu2021autoformer; @zhou2022fedformer; @nie2023patchtst]. Kolmogorov–Arnold Networks, including polynomial variants that draw on Chebyshev bases, and combinations of KAN
+components with attention have also been explored [@liu2024kan; @mason2003chebyshev; @sidharth2024chebyshevkan; @genet2024tkat; @zeng2025splineformer; @lei2026tem2kan]. Accordingly, the
+presence of KAN and attention components is not, by itself, a sufficient
+novelty claim. Research reproducibility checklists and artifact-review
+practices provide related guidance on experimental disclosure and
+inspectable computational artifacts [@neurips2024checklist; @acm2025artifactpolicy]. ETCP is positioned narrowly as an
+operational distinction between the evidence status of an individual
+claim and the eligibility of a specific pair of results for direct
+ranking. This paper does not establish that this distinction is novel
+relative to all existing approaches or more effective than established
+guidance.
+
+# 3. Materials and methods
+
+## 3.1 Study design and evidence sources
+
+This is a retrospective, evidence-traceability case study with a
+deterministic software proof of concept. The historical Meta-KAN metrics
+and settings are treated as claims transcribed from the preserved
+manuscript. Corrected LSTM metrics and configuration details are treated
+as project-record evidence, not as newly reproduced outcomes. The
+proof-of-concept input CSV files contain the claim and comparison
+records supplied to the audit engine. The software does not
+independently inspect the underlying historical model artifacts;
+therefore, classifications are conditional on the accuracy and
+completeness of the supplied records.
+
+## 3.2 Historical and corrected task contracts
+
+| Dimension          | Historical Meta-KAN record                                                         | Corrected LSTM records                                                                                                                                     |
+|--------------------|------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Predictors         | Seven documented input features                                                    | Six predictors; OT excluded                                                                                                                                |
+| Lookback           | 96 observations                                                                    | Not established in the current audit input                                                                                                                 |
+| Forecast horizon   | 1 step ahead                                                                       | 24 steps                                                                                                                                                   |
+| Historical metrics | Reported historical values: MAE 0.5407 °C; RMSE 0.7101 °C; SMAPE 11.47%; R² 0.9561 | Corrected seed 101 record: MAE 11.9169 °C; RMSE 13.7449 °C; SMAPE 96.3364%; R² −13.4838. Corrected seeds 202/303 are unresolved in the examined workspace. |
+| Evidence status    | Documented in preserved manuscript; not independently reproduced                   | Seed 101 is record-supported; seeds 202/303 were not verified by corrected completed-run records in the examined workspace.                                |
+
+These configurations differ in feature contract and forecast horizon.
+The historical Meta-KAN and corrected LSTM metrics are therefore
+ineligible for direct architecture ranking. The LSTM records may be
+compared within their group only after confirming common data,
+preprocessing, evaluation targets, and metric aggregation.
+
+## 3.3 Evidence status
+
+The protocol uses five primary statuses: D (documented), A
+(artifact-checked), R (independently reproduced), U (unresolved), and X
+(unsupported). A status is assigned according to the evidence fields
+supplied to the program. D means the claim is present in an identifiable
+source; A requires a documented artifact-level check; R requires
+regeneration through a sufficiently specified procedure; U identifies
+material ambiguity; and X indicates that available evidence does not
+justify the claim. The proof-of-concept script cannot itself establish
+that a declared artifact exists or that a transcribed value is correct.
+
+## 3.4 Comparison eligibility
+
+Comparison decisions are classified as eligible, conditional, or
+ineligible. The prototype explicitly checks forecast-horizon mismatch,
+feature-count mismatch, target alignment, preprocessing alignment, and
+provenance sufficiency. A production-grade implementation should
+additionally validate feature identities (not just feature counts),
+dataset/version identity, temporal split boundaries, lookback, scaler
+fitting, target alignment, metric definitions, and aggregation. These
+checks are currently recorded as a broader protocol requirement but are
+not all implemented as machine-enforced checks in version 1.
+
+## 3.5 Executable proof of concept
+
+The prototype consists of two structured CSV inputs, a Python script,
+two generated CSV outputs, a validation report, an environment record,
+and SHA-256 checksums. Running `python run_audit.py` reads the inputs
+and generates the output files. The claim register contains eight cases
+based on the manuscript and project records. The comparison register
+contains three case-derived comparisons and two deliberately constructed
+toy comparisons used to exercise the rules. The toy cases are software
+tests and are not empirical forecasting results. The included package
+was executed for this revision, and its six defined validation checks
+passed.
+
+# 4. Results
+
+## 4.1 Prototype execution
+
+The accompanying script was executed for this revision. It preserved all
+eight input claim records and all five comparison records in their
+corresponding outputs. Six validation checks passed: preservation of
+claim rows; preservation of comparison rows; rejection of direct
+comparison between the historical Meta-KAN and corrected LSTM records;
+acceptance of a fully aligned toy pair; rejection of a toy pair with a
+horizon mismatch; and agreement between the five computed pairwise
+decisions and their declared expected decisions. These checks verify
+limited software behavior on supplied records only; they do not
+constitute independent scientific validation, inter-rater agreement, or
+reproduction of the historical Meta-KAN or corrected LSTM model metrics.
+
+## 4.2 Claim-level audit outputs
+
+| Claim ID | Evidence status | Generated rationale                                                                                               |
+|----------|-----------------|-------------------------------------------------------------------------------------------------------------------|
+| C01      | D               | The claim is documented in the identified source, but this prototype has not reproduced it.                       |
+| C02      | A               | An artifact-level record is listed in the supplied register; the script does not inspect the underlying artifact. |
+| C03      | A               | An artifact-level record is listed in the supplied register; the script does not inspect the underlying artifact. |
+| C04      | X               | The supplied evidence register does not contain support for this claim.                                           |
+| C05      | X               | The supplied evidence register does not contain support for this claim.                                           |
+| C06      | X               | The supplied evidence register does not contain support for this claim.                                           |
+| C07      | D               | The claim is documented in the identified source, but this prototype has not reproduced it.                       |
+| C08      | U               | Evidence is partial; a comparison-critical element remains unresolved.                                            |
+
+Table 2 reports the script-generated classifications. Because the source
+fields are supplied as input, these results demonstrate deterministic
+application of the current rules, not independent verification of the
+underlying claims.
+
+## 4.3 Pairwise comparison outputs
+
+| Case | Comparison                                         | Decision    | Validation |
+|------|----------------------------------------------------|-------------|------------|
+| P01  | Historical Meta-KAN vs Corrected LSTM              | ineligible  | PASS       |
+| P02  | Corrected LSTM seed 101 vs Corrected LSTM seed 202 | conditional | PASS       |
+| P03  | Corrected LSTM vs Training-mean reference          | conditional | PASS       |
+| P04  | Toy model A vs Toy model B                         | eligible    | PASS       |
+| P05  | Toy model A vs Toy model C                         | ineligible  | PASS       |
+
+The historical Meta-KAN versus corrected LSTM comparison was classified
+as ineligible because the horizon and predictor-feature counts differ.
+The two toy cases show that the implementation can return eligible for a
+fully aligned declared pair and ineligible for an explicit horizon
+mismatch. The corrected-LSTM-seed and LSTM-versus-reference cases remain
+conditional because some alignment dimensions are not established.
+
+## 4.4 Training-mean baseline diagnostic
+
+The corrected six-feature LSTM pilot was compared with a training-mean
+baseline evaluated on the same test-target windows. The baseline
+achieved an MAE of 10.4515, RMSE of 11.0578, SMAPE of 94.7140%, and R²
+of −8.3744. The corrected LSTM seed-101 record reported MAE of 11.9169,
+RMSE of 13.7449, SMAPE of 96.3364%, and R² of −13.4838. The baseline
+therefore performed better on all four metrics in this pilot. This is a
+bounded diagnostic of the available pilot, not evidence that LSTM or
+Meta-KAN is generally ineffective. The comparison assumes that the
+shared test-target windows and evaluation calculations are correct; it
+should not be generalized beyond this configuration.
+
+| Metric  | Corrected LSTM, seed 101 | Training-mean baseline |
+|---------|--------------------------|------------------------|
+| MAE ↓   | 11.9169                  | 10.4515                |
+| RMSE ↓  | 13.7449                  | 11.0578                |
+| SMAPE ↓ | 96.3364%                 | 94.7140%               |
+| R² ↑    | −13.4838                 | −8.3744                |
+
+## 4.5 What the results do not establish
+
+The prototype does not reproduce the historical forecasting metrics,
+prove the correctness of the transcribed project records, show that ETCP
+detects more errors than existing checklists, or establish that
+independent assessors apply the rules consistently. The prototype is a
+computational demonstration of the current operational rules only.
+
+# 5. Discussion
+
+The case illustrates why a documented metric and a comparable metric are
+different concepts. A value can be faithfully transcribed from a
+manuscript while remaining unverified by source predictions. Similarly,
+two experiments may each have reported metrics yet be unsuitable for
+direct ranking if they use different forecast horizons, predictors, or
+evaluation observations. Separating these decisions can make the limits
+of an inference explicit.
+
+The current software is intentionally small and remains a proof of
+concept. Its first version checks feature counts rather than feature
+identities, and its classifications rely on manually supplied evidence
+fields. These limitations are material: the present release should be
+interpreted as an executable illustration of the proposed rules, not as
+a complete or validated audit framework. Future work should validate the
+full comparison contract and add tests for missing values, conflicting
+source records, and malformed inputs.
+
+# 6. Limitations and future work
+
+- The historical Meta-KAN metrics have not been independently
+  reproduced; the source prediction arrays and complete original
+  execution provenance are unavailable in the present evidence set.
+
+- The corrected LSTM records are transcribed from project records and
+  were not independently rerun for this manuscript.
+
+- The historical and corrected configurations differ in feature contract
+  and forecast horizon and cannot support direct architecture ranking.
+
+- The current prototype processes manually supplied records and does not
+  independently verify source artifacts.
+
+- The implementation is a small proof of concept; some
+  comparison-critical fields, including feature identities and complete
+  split/scaler checks, are not yet machine-enforced.
+
+- No independent-assessor reliability study or controlled comparison
+  with existing checklists has been conducted.
+
+- No real-world transformer telemetry or deployment benefit is
+  established.
+
+The training-mean baseline diagnostic is limited to one corrected LSTM
+pilot and the test-target windows used in that audit; it does not
+support broad conclusions about forecasting architectures.
+
+Future work should extend the schema and automated checks, evaluate ETCP
+against existing guidance with independent assessors, and report
+agreement, disagreement patterns, assessment time, and cases in which
+comparison decisions change. Any separate forecasting experiment should
+freeze the data version, feature list, lookback, horizon, temporal
+split, preprocessing, and metric aggregation before training.
+
+# 7. Conclusion
+
+This study provides a small reproducible computational demonstration of
+a proposed Evidence-Traceability and Comparability Protocol applied to a
+historical Meta-KAN forecasting case. The prototype regenerated
+claim-level and pairwise audit outputs from structured records, and six
+software validation checks passed. The historical Meta-KAN values remain
+manuscript-reported metrics rather than independently reproduced
+results. The corrected LSTM records use a different feature contract and
+forecast horizon and cannot be used for direct ranking against Meta-KAN.
+The present evidence supports describing ETCP as an executable proposal
+illustrated through a case study; it does not establish a validated
+standard, independent-assessor reliability, or superiority over existing
+reporting practices.
+
+# Declarations
+
+## Funding
+
+No specific funding was received for this work.
+
+## Competing interests
+
+The author declares no competing interests.
+
+## Data availability
+
+The public ETT benchmark family is available through the ETDataset
+repository [@zhou2021etdataset]. The exact ETT variant/file
+and source prediction arrays for the historical Meta-KAN results were
+not unambiguously identified in the available historical artifacts. The
+ETCP proof-of-concept input records, source code, generated outputs,
+validation report, environment record, and checksums are supplied in the
+accompanying reproducibility package. Historical model metrics should
+not be interpreted as independently reproduced.
+
+## Code availability
+
+The ETCP proof-of-concept code and structured input/output files are
+included in the accompanying ETCP_Computo_Prototype_v1 package. The
+package is a limited prototype, not a validated general-purpose audit
+tool.
+
+## Author contributions
+
+Pagidimarri Krishna: conceptualization, methodology, investigation,
+evidence curation, analysis, and writing—original draft and
+review/editing.
+
+## Use of generative AI
+
+Generative AI assisted with manuscript organization, language drafting,
+and prototype-code development. The author is responsible for verifying
+all scientific statements, code behavior, references, data descriptions,
+and the final manuscript.
+
+# Reproducibility instructions
+
+1\. Install Python 3.10 or later and pandas.  
+2. Extract the accompanying ETCP_Computo_Prototype_v1 package.  
+3. Run `python run_audit.py` from the extracted directory.  
+4. Inspect `etcp_results.csv`, `etcp_comparison_results.csv`, and
+`etcp_validation.txt`.  
+5. Compare the generated outputs with the supplied expected decisions
+and preserve the environment and checksum files.
+
+Reproducibility note: This instruction regenerates the ETCP audit
+outputs only. It does not rerun the historical Meta-KAN or LSTM training
+experiments.
