@@ -1,0 +1,46 @@
+---
+title: "ETCP: Evidence Traceability and Model Comparability Audit"
+---
+
+# Project overview
+
+This repository accompanies the case-based audit *Separating Evidence Traceability from Model Comparability: A Reproducible Case-Based Audit of Meta-KAN for Transformer Oil-Temperature Forecasting*.
+
+The repository contains a small deterministic proof-of-concept that processes structured claim records and experimental-comparison records. It is intended to make the supplied evidence classifications and comparison decisions inspectable and repeatable.
+
+## Scope and limitations
+
+The prototype evaluates only fields present in the supplied CSV files. It does not independently inspect source artifacts, verify the exact dataset variant or temporal indexing, reproduce historical Meta-KAN metrics, train forecasting models, or establish ETCP as a generally validated scientific standard. The historical Meta-KAN results discussed in the manuscript are reported historical values and were not independently reproduced in this audit.
+
+## Files
+
+- `main.qmd`: article source.
+- `references.bib`: bibliography used by the article.
+- `_quarto.yml`: Quarto and Computo article configuration.
+- `etcp_audit.py`: deterministic audit implementation.
+- `claims.csv`: structured claim/evidence records.
+- `comparisons.csv`: structured experimental-comparison cases.
+- `run_audit.py`: runner for the audit.
+- `test_etcp_audit.py`: regression tests.
+- `environment.yml`: declared Conda environment.
+
+## Run the audit
+
+From the repository root, create the environment and activate it:
+
+```bash
+conda env create -f environment.yml
+conda activate etcp-audit
+python run_audit.py
+python -m unittest test_etcp_audit.py
+```
+
+The audit should create `etcp_results.csv`, `etcp_comparison_results.csv`, `etcp_validation.txt`, and `environment.txt` in the repository root. These are generated outputs; their presence does not imply independent reproduction of any forecasting model.
+
+## Interpretation
+
+The comparison rules are deliberately limited. They check feature count, forecast horizon, target alignment, preprocessing alignment, and a coarse provenance field. They do not establish that two experiments use identical feature identities, dataset versions, temporal splits, scaling procedures, metric definitions, or aggregation methods. A decision marked `eligible` should therefore be read only as passing these limited prototype checks, not as proof of full scientific comparability.
+
+## Reproducibility status
+
+Before submission, the repository's environment declaration, regression tests, and official Computo/Quarto build must be run in a clean environment and their results reviewed. Do not treat a successful local prototype run as a successful official journal build.
