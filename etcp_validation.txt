@@ -1,0 +1,8 @@
+ETCP proof-of-concept validation report
+Checks passed: 6/6
+claim_rows_preserved: PASS
+comparison_rows_preserved: PASS
+historical_vs_corrected_ineligible: PASS
+aligned_toy_pair_eligible: PASS
+toy_horizon_mismatch_ineligible: PASS
+all_expected_decisions_match: PASS
