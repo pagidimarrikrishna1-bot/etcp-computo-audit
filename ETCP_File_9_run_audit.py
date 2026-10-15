@@ -2,11 +2,11 @@
 """Run the ETCP audit from the repository root.
 
 Usage:
-    python run_audit.py
+    python ETCP_File_9_run_audit.py
 
-This regenerates etcp_results.csv, etcp_comparison_results.csv,
- etсp_validation.txt, and environment.txt from the supplied CSV inputs.
-It does not train models or reproduce forecasting metrics.
+This runs etcp_audit.py and regenerates the audit outputs
+defined by that script. It does not train models or reproduce
+forecasting metrics.
 """
 from pathlib import Path
 import subprocess
