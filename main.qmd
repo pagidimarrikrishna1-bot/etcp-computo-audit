@@ -118,7 +118,7 @@ not all implemented as machine-enforced checks in version 1.
 
 The prototype consists of two structured CSV inputs, a Python script,
 two generated CSV outputs, a validation report, an environment record,
-and SHA-256 checksums. Running `python run_audit.py` reads the inputs
+and SHA-256 checksums. Running `python ETCP_File_9_run_audit.py` reads the inputs
 and generates the output files. The claim register contains eight cases
 based on the manuscript and project records. The comparison register
 contains three case-derived comparisons and two deliberately constructed
@@ -321,7 +321,7 @@ and the final manuscript.
 
 1\. Install Python 3.10 or later and pandas.  
 2. Extract the accompanying ETCP_Computo_Prototype_v1 package.  
-3. Run `python run_audit.py` from the extracted directory.  
+3. Run `python ETCP_File_9_run_audit.py` from the extracted directory.  
 4. Inspect `etcp_results.csv`, `etcp_comparison_results.csv`, and
 `etcp_validation.txt`.  
 5. Compare the generated outputs with the supplied expected decisions
