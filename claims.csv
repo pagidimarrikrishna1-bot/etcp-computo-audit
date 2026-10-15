@@ -1,10 +1,10 @@
-/content/etcp-computo-audit
 claim_id,claim,evidence_status,source_record,rationale
 C01,Historical Meta-KAN metrics,D,Preserved historical manuscript,Historical metrics are documented but not independently reproduced.
 C02,Historical seven-feature LSTM seed 101 record,A,Historical production ledger,A completed record is present; underlying predictions were not found in the examined workspace.
 C03,Corrected six-feature LSTM seed 101 metrics,A,Corrected run record,"A completed seed-101 record exists; predictions, weights and training history were not found."
 C04,Corrected six-feature LSTM seeds 202 and 303 verified,X,Examined corrected workspace,Corresponding corrected completed-run records were not found in the examined workspace.
-C05,All 84 planned runs completed,X,Corrected manifest and production ledger,"The manifest lists planned runs but the corrected ledger contains one completed record."
+C05,All 84 planned runs completed,X,Corrected manifest and production ledger,The manifest lists planned runs but the corrected ledger contains one completed record.
 C06,Meta-KAN superiority established by corrected LSTM comparison,X,Examined evidence inventory,Historical and corrected task contracts differ; a controlled comparison is not established.
 C07,Six ETCP software checks passed in this prototype,D,Prototype validation output,"This claim concerns the software checks defined in the supplied prototype, not scientific validation."
 C08,ETCP has established inter-assessor reliability,U,No assessor study supplied,Independent-assessor reliability has not been evaluated.
+
