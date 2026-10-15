@@ -283,10 +283,7 @@ The public ETT benchmark family is available through the ETDataset repository [@
 
 ## Code availability
 
-The ETCP proof-of-concept code and structured input/output files are
-included in the accompanying ETCP_Computo_Prototype_v1 package. The
-package is a limited prototype, not a validated general-purpose audit
-tool.
+The ETCP proof-of-concept code, structured input records, automated tests, and audit instructions are available in the public repository: https://github.com/pagidimarrikrishna1-bot/etcp-computo-audit. The implementation is a limited proof of concept, not a validated general-purpose audit tool.
 
 ## Author contributions
 
