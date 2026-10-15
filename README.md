@@ -1,49 +1,71 @@
 # Separating Evidence Traceability from Model Comparability: A Case-Based Audit of Meta-KAN for Transformer Oil-Temperature Forecasting
 
-**Pagidimarri Krishna**  
+**Author:** Pagidimarri Krishna  
 Independent Researcher, Hyderabad, India  
 Corresponding author: pagidimarrikrishna1@gmail.com  
 ORCID: [0009-0007-0352-0887](https://orcid.org/0009-0007-0352-0887)
 
-## Citation
+## Publication status
 
-Manuscript prepared for consideration by ComputO. Publication details and DOI will be added if and when formally assigned.
+Manuscript prepared for consideration by ComputO. No publication or DOI is claimed.
 
 ## Project overview
 
 This repository accompanies a retrospective, case-based study of the Evidence-Traceability and Comparability Protocol (ETCP), applied to a previously reported Meta-KAN study on transformer oil-temperature forecasting.
 
-ETCP separates the evidence status of an individual research claim from the eligibility of two experimental results for direct comparison. The accompanying Python prototype processes structured claim and comparison records and produces inspectable audit outputs.
+ETCP separates the evidence status of an individual research claim from the eligibility of two experimental results for direct comparison. The included Python prototype applies deterministic rules to supplied claim and comparison records and generates inspectable audit outputs.
 
 ## Repository contents
 
 - `etcp_audit.py` — audit implementation.
-- `ETCP_File_9_run_audit.py` and `run_audit.py` — runner scripts; their equivalence and intended entry point must be verified.
-- `ETCP_File_8_test_etcp_audit.py` and `test_etcp_audit.py` — test scripts; their equivalence and execution status must be verified.
-- `Claims.csv` and `claims.csv` — claim-related records; their contents and possible duplication must be checked.
-- `comparisons.csv` — experimental-comparison records.
-- `environment.yml` — environment specification.
-- `etcp_results.csv` and `etcp_comparison_results.csv` — recorded audit outputs; regeneration and consistency remain to be verified.
-- `etcp_validation.txt` — recorded validation output; it should be checked against a fresh execution.
-- `main.qmd` and `references.bib` — article source and bibliography.
-- Other repository files may contain supplementary configuration, checksums, and documentation.
+- `ETCP_File_9_run_audit.py` — designated audit runner.
+- `ETCP_File_8_test_etcp_audit.py` — unit tests.
+- `claims.csv` — canonical claim input read by the implementation and tests.
+- `comparisons.csv` — comparison records used by the implementation and tests.
+- `Claims.csv` and `ETCP_File_5_claims.csv` — additional claim-register files retained in the repository; they should not be assumed to be byte-identical to `claims.csv`.
+- `ETCP_File_6_comparisons.csv` — additional comparison-record file.
+- `environment.yml` and `ETCP_File_7_environment.yml` — environment specifications.
+- `etcp_comparison_results.csv` and `etcp_validation.txt` — recorded audit outputs.
+- `etcp_results (1).csv` — separately retained output file. A fresh runner execution generates `etcp_results.csv`.
+- `main.qmd`, `references.bib`, `README.qmd`, `ETCP_File_10_README.qmd`, and `_quarto.yml` — manuscript and documentation sources.
 
-## Evidence and reproducibility limitations
+The runner also generates `environment.txt` when executed.
 
-The historical Meta-KAN metrics are documented in the preserved manuscript but have not been independently reproduced in this reassessment. Corrected LSTM records use a different experimental configuration and do not establish a controlled comparison with Meta-KAN.
+## Reproducing the software audit
 
-The prototype evaluates supplied records; it does not independently verify all underlying experimental artifacts, establish inter-assessor reliability, or demonstrate that ETCP is a validated general-purpose standard. Software validation results must not be interpreted as reproduction of the forecasting experiments.
+Requirements: Python 3.10 or later and pandas.
 
-## Reproducibility
+From the repository root, run:
 
-The repository provides source code, structured evidence records, an environment specification, and recorded outputs. Before claiming full reproducibility, the actual runner and test scripts must be checked and executed in a suitable environment, generated outputs must be compared with the supplied records, and relevant source artifacts must be verified.
+```bash
+python -m pip install pandas
+python -m unittest -v ETCP_File_8_test_etcp_audit.py
+python ETCP_File_9_run_audit.py
+```
 
-The intended runner command should be confirmed against the actual repository files before use. The prototype does not retrain Meta-KAN or reproduce the historical forecasting metrics.
+The published repository was tested from a fresh GitHub clone. In that verification, all eight unit tests passed, followed by all six defined audit validation checks, using Python 3.13.16 and pandas 2.2.3.
+
+The audit generates:
+
+- `etcp_results.csv`
+- `etcp_comparison_results.csv`
+- `etcp_validation.txt`
+- `environment.txt`
+
+The generated files describe the supplied records and the execution environment. Output files may be regenerated by the runner.
+
+## Evidence and scientific limitations
+
+The historical Meta-KAN metrics are documented in the preserved manuscript but have not been independently reproduced in this reassessment. Corrected LSTM records are based on available project records and do not establish a controlled comparison with Meta-KAN because the experimental configurations differ.
+
+The prototype does not independently inspect or verify all underlying experimental artifacts. Its classifications depend on the supplied records and implement only a limited set of comparison rules. In particular, the current implementation checks feature counts rather than feature identities and does not enforce every comparison-critical condition discussed in the manuscript.
+
+The software tests and audit checks demonstrate deterministic software behavior on supplied records. They do not reproduce forecasting experiments, establish inter-assessor reliability, demonstrate superiority over existing checklists, or validate ETCP as a general-purpose scientific standard.
 
 ## Research integrity
 
-Unresolved or conflicting evidence is explicitly identified rather than inferred. Historical metrics are distinguished from independently reproduced results, and direct model comparisons are permitted only when the relevant experimental conditions and provenance support them.
+Unresolved or unsupported claims remain explicitly identified. Historical metrics are distinguished from independently reproduced results, and direct model comparisons are restricted when the available evidence does not establish compatible experimental conditions.
 
 ## License and publication status
 
-The repository's license and publication metadata should reflect the actual selected license and the journal's formal publication status. No journal DOI or publication badge is claimed here.
+No journal DOI or publication badge is claimed. The repository's licensing information should reflect the actual selected license.
