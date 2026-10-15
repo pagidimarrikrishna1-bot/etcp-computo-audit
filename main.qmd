@@ -116,16 +116,7 @@ not all implemented as machine-enforced checks in version 1.
 
 ## 3.5 Executable proof of concept
 
-The prototype consists of two structured CSV inputs, a Python script,
-two generated CSV outputs, a validation report, an environment record,
-and SHA-256 checksums. Running `python ETCP_File_9_run_audit.py` reads the inputs
-and generates the output files. The claim register contains eight cases
-based on the manuscript and project records. The comparison register
-contains three case-derived comparisons and two deliberately constructed
-toy comparisons used to exercise the rules. The toy cases are software
-tests and are not empirical forecasting results. The included package
-was executed for this revision, and its six defined validation checks
-passed.
+The prototype consists of structured CSV inputs, a Python audit script, two generated CSV outputs, a validation report, and an environment record. Running `python ETCP_File_9_run_audit.py` reads the supplied records and generates the audit outputs. The claim register contains eight cases based on the manuscript and project records. The comparison register contains three case-derived comparisons and two deliberately constructed toy comparisons used to exercise the rules. The toy cases are software tests and are not empirical forecasting results. The prototype was executed for this revision, and its six defined validation checks passed. These checks establish limited software behavior on the supplied records, not independent scientific validation or reproduction of historical model metrics.
 
 # 4. Results
 
