@@ -319,14 +319,17 @@ and the final manuscript.
 
 # Reproducibility instructions
 
-1\. Install Python 3.10 or later and pandas.  
-2. Extract the accompanying ETCP_Computo_Prototype_v1 package.  
-3. Run `python ETCP_File_9_run_audit.py` from the extracted directory.  
-4. Inspect `etcp_results.csv`, `etcp_comparison_results.csv`, and
-`etcp_validation.txt`.  
-5. Compare the generated outputs with the supplied expected decisions
-and preserve the environment and checksum files.
+1. Install Python 3.10 or later and Git.
+2. Clone the public repository:
+   `git clone https://github.com/pagidimarrikrishna1-bot/etcp-computo-audit.git`
+3. Change to the repository directory:
+   `cd etcp-computo-audit`
+4. Install pandas:
+   `python -m pip install pandas`
+5. Run the automated tests:
+   `python -m unittest -v ETCP_File_8_test_etcp_audit.py`
+6. Run the ETCP audit:
+   `python ETCP_File_9_run_audit.py`
+7. Inspect the generated files: `etcp_results.csv`, `etcp_comparison_results.csv`, `etcp_validation.txt`, and `environment.txt`.
 
-Reproducibility note: This instruction regenerates the ETCP audit
-outputs only. It does not rerun the historical Meta-KAN or LSTM training
-experiments.
+**Reproducibility note:** These instructions reproduce the ETCP audit outputs from the supplied records. They do not rerun or independently validate the historical Meta-KAN or LSTM training experiments. Successful execution of the audit demonstrates software behavior on the supplied records only; it does not establish the scientific validity of the historical results.
