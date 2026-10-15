@@ -145,7 +145,7 @@ reproduction of the historical Meta-KAN or corrected LSTM model metrics.
 | C05 | X | The supplied register does not support the claim as stated. |
 | C06 | X | The supplied register does not support the claim as stated. |
 | C07 | D | Documented in the identified source; not independently reproduced by this script. |
-| C08 | U | Material evidence remains unresolved in the supplied register. |                                         |
+| C08 | U | Material evidence remains unresolved in the supplied register. |                                       |
 
 Table 2 reports the script-generated classifications. Because the source
 fields are supplied as input, these results demonstrate deterministic
