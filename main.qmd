@@ -136,16 +136,16 @@ reproduction of the historical Meta-KAN or corrected LSTM model metrics.
 
 ## 4.2 Claim-level audit outputs
 
-| Claim ID | Evidence status | Generated rationale                                                                                               |
-|----------|-----------------|-------------------------------------------------------------------------------------------------------------------|
-| C01      | D               | The claim is documented in the identified source, but this prototype has not reproduced it.                       |
-| C02      | A               | An artifact-level record is listed in the supplied register; the script does not inspect the underlying artifact. |
-| C03      | A               | An artifact-level record is listed in the supplied register; the script does not inspect the underlying artifact. |
-| C04      | X               | The supplied evidence register does not contain support for this claim.                                           |
-| C05      | X               | The supplied evidence register does not contain support for this claim.                                           |
-| C06      | X               | The supplied evidence register does not contain support for this claim.                                           |
-| C07      | D               | The claim is documented in the identified source, but this prototype has not reproduced it.                       |
-| C08      | U               | Evidence is partial; a comparison-critical element remains unresolved.                                            |
+| Claim ID | Evidence status | Generated rationale |
+|----------|-----------------|---------------------|
+| C01 | D | Documented in the identified source; not independently reproduced by this script. |
+| C02 | A | Artifact-level record was reported in the supplied register; the script does not inspect the source artifact. |
+| C03 | A | Artifact-level record was reported in the supplied register; the script does not inspect the source artifact. |
+| C04 | X | The supplied register does not support the claim as stated. |
+| C05 | X | The supplied register does not support the claim as stated. |
+| C06 | X | The supplied register does not support the claim as stated. |
+| C07 | D | Documented in the identified source; not independently reproduced by this script. |
+| C08 | U | Material evidence remains unresolved in the supplied register. |                                         |
 
 Table 2 reports the script-generated classifications. Because the source
 fields are supplied as input, these results demonstrate deterministic
