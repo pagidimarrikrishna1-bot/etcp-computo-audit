@@ -18,14 +18,15 @@ ETCP separates the evidence status of an individual research claim from the elig
 ### Repository contents
 
 - `etcp_audit.py` — audit implementation.
-- `run_audit.py` — audit execution script.
-- `test_etcp_audit.py` — software tests.
-- `Claims.csv` and `claims.csv` — claim-related records; consistency and duplication should be checked before final release.
+- `ETCP_File_9_run_audit.py` and `run_audit.py` — runner scripts. The intended canonical entry point and equivalence of these scripts should be verified before release.
+- `ETCP_File_8_test_etcp_audit.py` and `test_etcp_audit.py` — test scripts. Their equivalence and execution status should be verified before release.
+- `Claims.csv` and `claims.csv` — claim-related records. Their contents, capitalization, and possible duplication should be checked before release.
 - `comparisons.csv` — experimental-comparison records.
 - `environment.yml` — environment specification.
-- `etcp_results.csv` and `etcp_comparison_results.csv` — generated audit outputs, subject to verification.
-- `etcp_validation.txt` — recorded validation output.
+- `etcp_results.csv` and `etcp_comparison_results.csv` — recorded audit outputs; regeneration and consistency with the source records remain to be verified.
+- `etcp_validation.txt` — recorded validation output; the results should be regenerated and checked before claiming successful execution.
 - `main.qmd` and `references.bib` — article source and bibliography.
+- Other repository files may contain supplementary configuration, checksums, tests, and documentation.
 
 ### Evidence and reproducibility limitations
 
