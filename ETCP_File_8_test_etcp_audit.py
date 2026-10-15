@@ -2,7 +2,7 @@
 """Regression tests for the ETCP proof-of-concept audit rules.
 
 Run from the repository root with:
-    python -m unittest -v test_etcp_audit.py
+    python -m unittest -v ETCP_File_8_test_etcp_audit.py
 
 These tests verify deterministic software behavior on supplied records only.
 They do not validate ETCP as a general scientific standard or reproduce model results.
