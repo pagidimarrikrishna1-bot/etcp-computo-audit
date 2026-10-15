@@ -1,5 +1,5 @@
 
-# 1. Introduction
+#  Introduction
 
 Forecasting transformer oil temperature from multivariate time series is
 an engineering prediction problem in which reported errors depend on the
@@ -18,7 +18,7 @@ Instead, we provide a structured claim-level audit and a small
 executable proof of concept for the Evidence-Traceability and
 Comparability Protocol (ETCP).
 
-## 1.1 Aim and research questions
+##  Aim and research questions
 
 - RQ1. Which claims are documented in the preserved manuscript, and
   which remain unverified or unsupported?
@@ -32,7 +32,7 @@ Comparability Protocol (ETCP).
 - RQ4. Can the proposed audit rules be implemented as a deterministic
   computation whose outputs are regenerated from supplied records?
 
-## 1.2 Contributions and scope
+##  Contributions and scope
 
 The paper makes three bounded contributions: (i) an evidence inventory
 for a preserved Meta-KAN manuscript and related project records; (ii) an
@@ -43,7 +43,7 @@ cases. This is a software-operationalization demonstration, not a
 validation study of ETCP's reliability or added value over existing
 checklists.
 
-# 2. Related work and positioning
+#  Related work and positioning
 
 Sequence forecasting literature includes recurrent models such as LSTM [@hochreiter1997lstm],
 attention-based architectures [@vaswani2017attention], and long-sequence forecasting
@@ -59,9 +59,9 @@ ranking. This paper does not establish that this distinction is novel
 relative to all existing approaches or more effective than established
 guidance.
 
-# 3. Materials and methods
+# Materials and methods
 
-## 3.1 Study design and evidence sources
+## Study design and evidence sources
 
 This is a retrospective, evidence-traceability case study with a
 deterministic software proof of concept. The historical Meta-KAN metrics
@@ -74,7 +74,7 @@ independently inspect the underlying historical model artifacts;
 therefore, classifications are conditional on the accuracy and
 completeness of the supplied records.
 
-## 3.2 Historical and corrected task contracts
+##  Historical and corrected task contracts
 
 | Dimension          | Historical Meta-KAN record                                                         | Corrected LSTM records                                                                                                                                     |
 |--------------------|------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -90,7 +90,7 @@ ineligible for direct architecture ranking. The LSTM records may be
 compared within their group only after confirming common data,
 preprocessing, evaluation targets, and metric aggregation.
 
-## 3.3 Evidence status
+##  Evidence status
 
 The protocol uses five primary statuses: D (documented), A
 (artifact-checked), R (independently reproduced), U (unresolved), and X
@@ -102,7 +102,7 @@ material ambiguity; and X indicates that available evidence does not
 justify the claim. The proof-of-concept script cannot itself establish
 that a declared artifact exists or that a transcribed value is correct.
 
-## 3.4 Comparison eligibility
+## Comparison eligibility
 
 Comparison decisions are classified as eligible, conditional, or
 ineligible. The prototype explicitly checks forecast-horizon mismatch,
@@ -114,13 +114,13 @@ fitting, target alignment, metric definitions, and aggregation. These
 checks are currently recorded as a broader protocol requirement but are
 not all implemented as machine-enforced checks in version 1.
 
-## 3.5 Executable proof of concept
+##  Executable proof of concept
 
 The prototype consists of structured CSV inputs, a Python audit script, two generated CSV outputs, a validation report, and an environment record. Running `python ETCP_File_9_run_audit.py` reads the supplied records and generates the audit outputs. The claim register contains eight cases based on the manuscript and project records. The comparison register contains three case-derived comparisons and two deliberately constructed toy comparisons used to exercise the rules. The toy cases are software tests and are not empirical forecasting results. The prototype was executed for this revision, and its six defined validation checks passed. These checks establish limited software behavior on the supplied records, not independent scientific validation or reproduction of historical model metrics.
 
-# 4. Results
+#  Results
 
-## 4.1 Prototype execution
+##  Prototype execution
 
 The accompanying script was executed for this revision. It preserved all
 eight input claim records and all five comparison records in their
@@ -134,7 +134,7 @@ limited software behavior on supplied records only; they do not
 constitute independent scientific validation, inter-rater agreement, or
 reproduction of the historical Meta-KAN or corrected LSTM model metrics.
 
-## 4.2 Claim-level audit outputs
+##  Claim-level audit outputs
 
 | Claim ID | Evidence status | Generated rationale |
 |----------|-----------------|---------------------|
@@ -152,7 +152,7 @@ fields are supplied as input, these results demonstrate deterministic
 application of the current rules, not independent verification of the
 underlying claims.
 
-## 4.3 Pairwise comparison outputs
+## Pairwise comparison outputs
 
 | Case | Comparison                                         | Decision    | Validation |
 |------|----------------------------------------------------|-------------|------------|
@@ -169,7 +169,7 @@ fully aligned declared pair and ineligible for an explicit horizon
 mismatch. The corrected-LSTM-seed and LSTM-versus-reference cases remain
 conditional because some alignment dimensions are not established.
 
-## 4.4 Training-mean baseline diagnostic
+## Training-mean baseline diagnostic
 
 The corrected six-feature LSTM pilot was compared with a training-mean
 baseline evaluated on the same test-target windows. The baseline
@@ -189,7 +189,7 @@ should not be generalized beyond this configuration.
 | SMAPE ↓ | 96.3364%                 | 94.7140%               |
 | R² ↑    | −13.4838                 | −8.3744                |
 
-## 4.5 What the results do not establish
+##  What the results do not establish
 
 The prototype does not reproduce the historical forecasting metrics,
 prove the correctness of the transcribed project records, show that ETCP
@@ -197,7 +197,7 @@ detects more errors than existing checklists, or establish that
 independent assessors apply the rules consistently. The prototype is a
 computational demonstration of the current operational rules only.
 
-# 5. Discussion
+#  Discussion
 
 The case illustrates why a documented metric and a comparable metric are
 different concepts. A value can be faithfully transcribed from a
@@ -216,7 +216,7 @@ a complete or validated audit framework. Future work should validate the
 full comparison contract and add tests for missing values, conflicting
 source records, and malformed inputs.
 
-# 6. Limitations and future work
+#  Limitations and future work
 
 - The historical Meta-KAN metrics have not been independently
   reproduced; the source prediction arrays and complete original
@@ -252,7 +252,7 @@ comparison decisions change. Any separate forecasting experiment should
 freeze the data version, feature list, lookback, horizon, temporal
 split, preprocessing, and metric aggregation before training.
 
-# 7. Conclusion
+#  Conclusion
 
 This study provides a small reproducible computational demonstration of
 a proposed Evidence-Traceability and Comparability Protocol applied to a
