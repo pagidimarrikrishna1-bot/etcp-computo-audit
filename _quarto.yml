@@ -13,7 +13,6 @@ author:
     affiliations:
       - name: Independent Researcher
         department: Hyderabad, India
-date: last-modified
 date-modified: last-modified
 abstract: >+
   Machine-learning forecasting results can be interpreted responsibly only when the prediction task, input definition, preprocessing, evaluation protocol, and supporting artifacts are sufficiently traceable. This study presents an evidence-bounded computational audit of a previously reported Meta-KAN for transformer oil-temperature forecasting. Historical metrics remain reported values and are not independently reproduced. The corrected workspace contains one completed six-predictor LSTM record for seed 101; corrected records for seeds 202 and 303 were not found. A deterministic ETCP prototype processes supplied claim and comparison records. Its software checks demonstrate limited implementation behavior, not general scientific validation.
